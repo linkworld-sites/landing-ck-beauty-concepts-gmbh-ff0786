@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style id='brand'>:root{
+  --bg:#0b0b0c; --surface:#141417; --surface-2:#1c1c21;
+  --fg:#f5f5f7; --fg-muted:#a1a1aa; --border:#26262b;
+  --accent:#3b82f6; --accent-fg:#fff; --radius:14px; --maxw:1100px;
+  --font:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.hero{padding:140px 0 90px;text-align:center}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.01em}
+.muted{color:var(--fg-muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-fg);padding:14px 28px;border-radius:var(--radius);font-weight:600;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,opacity .15s ease}
+.btn:hover{transform:translateY(-2px);opacity:.92}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.grid{display:grid;gap:24px}
+@media(max-width:640px){.section{padding:64px 0}.hero{padding:96px 0 64px}}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CK Beauty Concepts GmbH — Luxury Beauty, Reimagined</title>
+<style>
+  :root{
+    --accent:#c9a15a;
+    --accent-2:#e8d5ab;
+    --bg:#0d0c0b;
+    --surface:#171512;
+    --fg:#f4efe6;
+    --fg-muted:#b3a99a;
+    --border:#2c2823;
+    --radius:2px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    background:
+      radial-gradient(ellipse at top, rgba(201,161,90,0.08), transparent 60%),
+      var(--bg);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: var(--fg);
+  }
+
+  .eyebrow{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  nav.ck-nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(13,12,11,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .ck-nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 1.1rem 0;
+  }
+  .ck-logo{
+    font-size: 1.3rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .ck-logo span{ color: var(--accent); }
+  .ck-nav-links{
+    display:flex;
+    gap: 2.2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+  }
+  .ck-nav-links a{
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color .25s ease;
+    position: relative;
+  }
+  .ck-nav-links a:hover{ color: var(--fg); }
+  .ck-nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-6px;
+    width:0; height:1px;
+    background: var(--accent);
+    transition: width .3s ease;
+  }
+  .ck-nav-links a:hover::after{ width:100%; }
+
+  /* HERO */
+  .hero{
+    position: relative;
+    padding: 7rem 0 6rem;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,161,90,0.04) 0 1px, transparent 1px 90px);
+    pointer-events:none;
+  }
+  .hero-mark{
+    width: 62px; height: 62px;
+    margin: 0 auto 1.8rem;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1.4rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: ck-rise .8s ease forwards;
+    animation-delay: .05s;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 1.08;
+    font-weight: 400;
+    margin: 0 0 1.4rem;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    animation: ck-rise .9s ease forwards;
+    animation-delay: .15s;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero p.lead{
+    max-width: 620px;
+    margin: 0 auto 2.6rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--fg-muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: ck-rise .9s ease forwards;
+    animation-delay: .3s;
+  }
+  .hero-cta{
+    display:flex;
+    gap: 1rem;
+    justify-content:center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: ck-rise .9s ease forwards;
+    animation-delay: .45s;
+  }
+  @keyframes ck-rise{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .btn{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    border-radius: var(--radius);
+    padding: 0.95rem 2.2rem;
+    background: var(--accent);
+    color: #0d0c0b;
+    border: 1px solid var(--accent);
+    transition: all .3s ease;
+  }
+  .btn:hover{
+    background: transparent;
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .btn-ghost{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    border-radius: var(--radius);
+    padding: 0.95rem 2.2rem;
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    transition: all .3s ease;
+  }
+  .btn-ghost:hover{
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats{
+    display:flex;
+    justify-content:center;
+    gap: 3.5rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: ck-rise .9s ease forwards;
+    animation-delay: .6s;
+  }
+  .hero-stats div{ text-align:center; }
+  .hero-stats .num{
+    font-size: 1.7rem;
+    color: var(--accent);
+    display:block;
+  }
+  .hero-stats .lbl{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  /* VALUE / FEATURES */
+  .section-head{
+    text-align:center;
+    max-width: 640px;
+    margin: 0 auto 3.5rem;
+  }
+  .section-head h2{
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 400;
+    margin: 0.8rem 0 1rem;
+  }
+  .section-head p{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+
+  .feature-card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.4rem 2rem;
+    border-radius: var(--radius);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    opacity: 1;
+  }
+  .feature-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
+  .feature-icon{
+    width: 44px; height: 44px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    font-size: 1.1rem;
+  }
+  .feature-card h3{
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0 0 0.7rem;
+  }
+  .feature-card p{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* PRICING TEASER */
+  .pricing-section{
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .price-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+  }
+  @media (max-width: 900px){
+    .price-grid{ grid-template-columns: 1fr; }
+  }
+  .price-card{
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2.6rem 2rem;
+    border-radius: var(--radius);
+    text-align:center;
+    position: relative;
+    transition: transform .35s ease, border-color .35s ease;
+  }
+  .price-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+  .price-card.featured{
+    border-color: var(--accent);
+    background: linear-gradient(160deg, rgba(201,161,90,0.08), transparent 60%);
+  }
+  .price-tag{
+    position:absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0d0c0b;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+  }
+  .price-card h3{
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin: 0.4rem 0 0.4rem;
+    letter-spacing: 0.03em;
+  }
+  .price-card .amount{
+    font-size: 2.4rem;
+    color: var(--accent);
+    margin: 0.8rem 0;
+  }
+  .price-card .amount sup{
+    font-size: 1rem;
+    top: -1em;
+  }
+  .price-card ul{
+    list-style: none;
+    padding: 0;
+    margin: 1.6rem 0 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--fg-muted);
+    font-size: 0.88rem;
+    line-height: 2.1;
+    text-align: left;
+  }
+  .price-card ul li::before{
+    content: "—";
+    color: var(--accent);
+    margin-right: 0.6rem;
+  }
+
+  /* FOOTER */
+  footer.ck-footer{
+    padding: 4rem 0 2rem;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 800px){
+    .footer-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .footer-grid h4{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 1rem;
+  }
+  .footer-grid a{
+    display:block;
+    color: var(--fg-muted);
+    text-decoration:none;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+    margin-bottom: 0.7rem;
+    transition: color .2s ease;
+  }
+  .footer-grid a:hover{ color: var(--accent); }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top: 1px solid var(--border);
+    padding-top: 1.6rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .ck-divider{
+    text-align:center;
+    color: var(--accent);
+    letter-spacing: 0.4em;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  /* subtle scroll reveal - visible by default */
+  .reveal{
+    opacity: 1;
+    transform: none;
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.pre{
+    opacity: 0.001;
+    transform: translateY(18px);
+  }
+</style>
+</head>
+<body>
+
+<nav class="ck-nav">
+  <div class="container ck-nav-inner">
+    <div class="ck-logo">CK <span>Beauty</span> Concepts</div>
+    <div class="ck-nav-links">
+      <a href="#values">Philosophy</a>
+      <a href="#collections">Collections</a>
+      <a href="#pricing">Membership</a>
+      <a href="#footer">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-mark">CK</div>
+    <div class="eyebrow">München · Est. Since Private Formulation</div>
+    <h1>Luxury beauty,<br><em>engineered with intention.</em></h1>
+    <p class="lead">CK Beauty Concepts GmbH crafts high-performance cosmetics for the discerning few — formulated in Germany, finished by hand, and designed to outlast every trend.</p>
+    <div class="hero-cta">
+      <a href="#collections" class="btn">Discover Collections</a>
+      <a href="#pricing" class="btn-ghost">View Membership</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="num">37</span><span class="lbl">Active Formulas</span></div>
+      <div><span class="num">12</span><span class="lbl">Countries Distributed</span></div>
+      <div><span class="num">100%</span><span class="lbl">EU Manufactured</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="values">
+  <div class="container">
+    <div class="section-head reveal pre">
+      <div class="eyebrow">Our Philosophy</div>
+      <h2>Beauty is a discipline, not a trend</h2>
+      <p>In a market crowded with fast beauty, we build slowly — chemists, dermatologists and artisans working in concert to produce a small, deliberate range of products that actually perform.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.6rem;">
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">✦</div>
+        <h3>Clinical-Grade Formulation</h3>
+        <p>Every product is developed with dermatological research partners and tested to pharmaceutical-adjacent standards before it ever reaches a shelf.</p>
+      </div>
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">◆</div>
+        <h3>Made & Finished in the EU</h3>
+        <p>From raw actives to final packaging, our supply chain stays within Germany and neighboring partners — full traceability, zero compromise.</p>
+      </div>
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">●</div>
+        <h3>Limited, Not Mass</h3>
+        <p>We cap production intentionally. Scarcity isn't marketing here — it's a manufacturing philosophy that protects quality at scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="collections" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal pre">
+      <div class="eyebrow">Signature Collections</div>
+      <h2>Three lines. One standard.</h2>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.6rem;">
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">✧</div>
+        <h3>La Peau Collection</h3>
+        <p>Skincare-first color cosmetics built around active serums — foundation that treats, not just covers.</p>
+      </div>
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">✧</div>
+        <h3>Atelier Noir</h3>
+        <p>Our evening line — richly pigmented, long-wear formulas designed for editorial and red-carpet finish.</p>
+      </div>
+      <div class="feature-card reveal pre">
+        <div class="feature-icon">✧</div>
+        <h3>Rituel Quotidien</h3>
+        <p>Daily essentials: minimalist skincare and complexion products for those who want less, done better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-head reveal pre">
+      <div class="eyebrow">Membership & Access</div>
+      <h2>Private access, priced simply</h2>
+      <p>Beyond retail — an ongoing relationship with early formula access, personal consultation, and members-only releases.</p>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card reveal pre">
+        <h3>Découverte</h3>
+        <div class="amount">€0</div>
+        <ul>
+          <li>Access to core catalogue</li>
+          <li>Seasonal launch previews</li>
+          <li>Standard EU shipping</li>
+        </ul>
+        <a href="#" class="btn-ghost" style="display:block;">Start Here</a>
+      </div>
+
+      <div class="price-card featured reveal pre">
+        <div class="price-tag">Most Chosen</div>
+        <h3>Maison</h3>
+        <div class="amount">€39<sup>/mo</sup></div>
+        <ul>
+          <li>Everything in Découverte</li>
+          <li>Quarterly curated formula box</li>
+          <li>1:1 virtual consultation</li>
+          <li>Priority access to limited runs</li>
+        </ul>
+        <a href="#" class="btn" style="display:block;">Join Maison</a>
+      </div>
+
+      <div class="price-card reveal pre">
+        <h3>Privé</h3>
+        <div class="amount">By Invite</div>
+        <ul>
+          <li>Everything in Maison</li>
+          <li>Bespoke formulation input</li>
+          <li>Direct line to our lab team</li>
+          <li>Concierge delivery worldwide</li>
+        </ul>
+        <a href="#" class="btn-ghost" style="display:block;">Request Invitation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ck-footer" id="footer">
+  <div class="container">
+    <div class="ck-divider">✦ ✦ ✦</div>
+    <div class="footer-grid">
+      <div>
+        <div class="ck-logo" style="margin-bottom:1rem;">CK <span>Beauty</span> Concepts</div>
+        <p class="muted" style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.88rem; line-height:1.7; max-width:280px;">
+          CK Beauty Concepts GmbH — Luxury cosmetics manufactured and formulated in Germany for a global, discerning clientele.
+        </p>
+      </div>
+      <div>
+        <h4>Collections</h4>
+        <a href="#collections">La Peau</a>
+        <a href="#collections">Atelier Noir</a>
+        <a href="#collections">Rituel Quotidien</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#values">Philosophy</a>
+        <a href="#pricing">Membership</a>
+        <a href="#">Press</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="#">hello@ckbeautyconcepts.de</a>
+        <a href="#">München, Germany</a>
+        <a href="#">+49 89 000 000</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 CK Beauty Concepts GmbH. All rights reserved.</span>
+      <span>Handmade in Germany · GDPR Compliant · Cruelty-Free</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll — content is visible by default (.reveal), JS only enhances
+  document.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      items.forEach(function (el) { el.classList.add('pre-active'); });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('pre');
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (el) { observer.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.remove('pre'); });
+    }
+  });
+
+  // subtle nav shrink on scroll
+  var nav = document.querySelector('.ck-nav');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      nav.style.boxShadow = '0 8px 24px rgba(0,0,0,0.35)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
